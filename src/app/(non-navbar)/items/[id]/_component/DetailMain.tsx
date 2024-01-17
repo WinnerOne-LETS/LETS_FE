@@ -22,7 +22,7 @@ const DetailMain = () => {
   const { data: packageDetail } = usePackageDetailQuery(params.id);
   const [viewMore, setViewMore] = useState(false);
 
-  if (!packageDetail) {
+  if (packageDetail.code === 404) {
     return (
       <div>
         <h1>상품 없음...</h1>

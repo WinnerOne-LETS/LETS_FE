@@ -22,6 +22,14 @@ const DetailMain = () => {
   const { data: packageDetail } = usePackageDetailQuery(params.id);
   const [viewMore, setViewMore] = useState(false);
 
+  if (!packageDetail) {
+    return (
+      <div>
+        <h1>상품 없음...</h1>
+      </div>
+    );
+  }
+
   const tabsData = [
     {
       name: "상품소개",

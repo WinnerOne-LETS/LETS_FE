@@ -5,6 +5,15 @@ import { PackageInfo } from "@/app/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+// interface Props {
+//   data: InfiniteData<any, unknown> | undefined;
+//   fetchNextPage: (
+//     options?: FetchNextPageOptions | undefined,
+//   ) => Promise<InfiniteQueryObserverResult<InfiniteData<any, unknown>, Error>>;
+//   hasNextPage: boolean;
+//   isFetching: boolean;
+// }
+
 const BestThemeDetail = () => {
   const router = useRouter();
   const [themeData, setThemeData] = useState<PackageInfo[]>();

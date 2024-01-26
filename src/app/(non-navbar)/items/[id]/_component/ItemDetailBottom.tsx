@@ -48,6 +48,31 @@ const ItemDetailBottom = ({
   const [totalPrice, setTotalPrice] = useState(packageDetail.totalPrice.adult);
   const [error, setError] = useState("");
 
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    setPortalElement(document.getElementById("portal"));
+  }, [reservation]);
+
+  useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+
+    const handleScroll = () => {
+      setIsScrolling(true);
+
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsScrolling(false);
+      }, 200);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const getAailableDate = () => {
     const availableDate = schedules?.data.find((schedule) => {
       return schedule.date === packageDetail.departureDatetime.date;
@@ -56,14 +81,10 @@ const ItemDetailBottom = ({
     return availableDate?.availableDateId;
   };
 
-  useEffect(() => {
-    setPortalElement(document.getElementById("portal"));
-  }, [reservation]);
-
   const getAnimation = () => {
     if (!viewMore) return "";
 
-    if (isScrollUp) return "animate-positionTopAnimation";
+    if (isScrollUp || !isScrolling) return "animate-positionTopAnimation";
     else return "animate-positionTopAnimationReverse";
   };
 

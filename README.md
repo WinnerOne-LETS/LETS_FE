@@ -3,8 +3,7 @@
 <div align="center">
 
 </br>
-<img src="https://github.com/developer-jyyun/lets/assets/131247158/807bdd12-651c-433f-89e4-0d0511d3ba95" width=300 />
-
+<img src="https://github.com/yanolja-finalproject/LETS_FE/assets/131247158/20eda762-3af1-4aae-b741-aa0eb21f1ec6" width=300 />
 <p align="center">
   <a href="https://winnerone.site/">
     <img alt="Static Badge" src="https://img.shields.io/badge/Winner%20One-ff3478" width="240"alt="site"/>

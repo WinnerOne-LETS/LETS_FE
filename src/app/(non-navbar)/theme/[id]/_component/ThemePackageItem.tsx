@@ -14,6 +14,7 @@ import { PackageInfo, ThemeItem } from "@/app/types";
 import { useRouter } from "next/navigation";
 
 import useLoadingStore from "@/store/useLoadingStore";
+import useScrollYStore from "@/store/useScrollYStore";
 
 // isBest: 베스트 테마 여부 prop
 interface Props {
@@ -41,6 +42,7 @@ const ThemePackageItem = ({
   );
 
   const loadingState = useLoadingStore();
+  const scrollYState = useScrollYStore();
 
   return (
     <>
@@ -87,6 +89,7 @@ const ThemePackageItem = ({
                   onClick={() => {
                     router.push(`/items/${value.packages[0].packageId}`);
                     loadingState.setLoadingTrue();
+                    scrollYState.setScrollY(window.scrollY);
                   }} // 클릭시 상세 페이지 연결
                 >
                   <img

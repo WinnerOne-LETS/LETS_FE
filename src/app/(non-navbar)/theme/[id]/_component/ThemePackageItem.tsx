@@ -13,6 +13,8 @@ import SkeletonItem from "@/app/(navbar)/search/_component/SkeletonItem";
 import { PackageInfo, ThemeItem } from "@/app/types";
 import { useRouter } from "next/navigation";
 
+import useLoadingStore from "@/store/useLoadingStore";
+
 // isBest: 베스트 테마 여부 prop
 interface Props {
   data: InfiniteData<any, unknown> | undefined;
@@ -37,6 +39,8 @@ const ThemePackageItem = ({
     isFetching,
     hasNextPage,
   );
+
+  const loadingState = useLoadingStore();
 
   return (
     <>
@@ -80,9 +84,10 @@ const ThemePackageItem = ({
                 <div
                   key={index2}
                   className="cursor-pointer"
-                  onClick={() =>
-                    router.push(`/items/${value.packages[0].packageId}`)
-                  } // 클릭시 상세 페이지 연결
+                  onClick={() => {
+                    router.push(`/items/${value.packages[0].packageId}`);
+                    loadingState.setLoadingTrue();
+                  }} // 클릭시 상세 페이지 연결
                 >
                   <img
                     src={value.packages[0].imageUrl}

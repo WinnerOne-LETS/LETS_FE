@@ -6,6 +6,7 @@ import ScrollToUpButton from "@/app/_component/common/atom/ScrollToUpButton";
 import DefaultHeader from "@/app/_component/common/layout/DefaultHeader";
 import TabsContainer from "@/app/_component/common/layout/TabsContainer";
 import usePackageDetailQuery from "@/hooks/query/usePackageDetailQuery";
+import useLoadingStore from "@/store/useLoadingStore";
 import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import BadgeList from "./BadgeList";
@@ -25,6 +26,8 @@ const DetailMain = () => {
   const params = useParams();
   const searchParams = useSearchParams();
   const pathname = usePathname();
+
+  const loadingState = useLoadingStore();
 
   const getUrl = () => {
     if (searchParams.get("departDate")) {
@@ -61,6 +64,10 @@ const DetailMain = () => {
     };
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    loadingState.setLoadingFalse();
   }, []);
 
   if (packageDetail.code === 404) {

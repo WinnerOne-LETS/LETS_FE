@@ -1,6 +1,6 @@
+import DetailSkeleton from "@/app/(non-navbar)/items/[id]/_component/DetailSkeleton";
+import useLoadingStore from "@/store/useLoadingStore";
 import { useParams } from "next/navigation";
-
-// 테마 상세 컴포넌트 / 쿼리 import
 import useThemeResult from "../_hooks/useThemeResult";
 import ThemeDetail from "./ThemeDetail";
 
@@ -14,6 +14,13 @@ const Theme = () => {
     packageIsFetching,
     packageIsLoading,
   } = useThemeResult(id.toString(), "departure_date");
+
+  const loadingState = useLoadingStore();
+
+  if (loadingState.isLoading) {
+    return <DetailSkeleton />;
+  }
+
   return (
     <ThemeDetail
       data={packageData}

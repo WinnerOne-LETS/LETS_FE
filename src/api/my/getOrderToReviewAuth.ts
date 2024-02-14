@@ -11,10 +11,7 @@ const getOrderToReviewAuth = async (cookie?: string) => {
       },
     );
 
-    console.log(result);
-
     const res = await result.json();
-    // console.log("getOrderToReview:", res);
     return res.data;
   } catch (error) {
     console.error(error);

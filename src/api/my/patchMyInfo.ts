@@ -37,8 +37,6 @@ const patchMyInfo = async (myInfo: MyInfoData) => {
         errorData.message || "회원정보 수정 중 오류가 발생했습니다.",
       );
     }
-    const updatedData = await result.json();
-    console.log("update", updatedData);
   } catch (error) {
     console.error(error);
     throw error;

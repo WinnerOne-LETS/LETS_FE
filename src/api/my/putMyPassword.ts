@@ -11,8 +11,6 @@ const putMyPassword = async (password: string) => {
         body: JSON.stringify({ password }),
       },
     );
-    const updatedData = await result.json();
-    console.log("updated password:", updatedData);
   } catch (error) {
     console.error(error);
     throw error;

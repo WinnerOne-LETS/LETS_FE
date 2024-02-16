@@ -94,8 +94,6 @@ const Compare = () => {
           setCurrentItem(responseData.data[0]);
           setCompareIndex(1);
         }
-
-        console.log(responseData.data);
       } catch (error) {
         console.error("Failed to fetch products:", error);
       }
@@ -110,8 +108,6 @@ const Compare = () => {
       setCompareIndex(0);
     }
   }, [compareIndex]);
-
-  // console.log(currentItem);
 
   const handleRefresh = () => {
     setCurrentItem(storedProducts[compareIndex]);

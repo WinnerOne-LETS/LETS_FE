@@ -30,8 +30,6 @@ const HomeProsAndCons = () => {
     router.push("/balance");
   };
 
-  console.log(data);
-
   return (
     <div
       className="relative flex justify-center cursor-pointer"
